@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+
+  flask:
+    build: ./app
+    container_name: flask-app
+    restart: on-failure
+    volumes:
+      - ./app:/app
+    ports:
+      - "5000:5000"
+    command: python main.py
