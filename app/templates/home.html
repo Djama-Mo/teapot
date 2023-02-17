@@ -9,6 +9,10 @@
 <body>
 <h1>This is Vitek VT-1155!</h1>
 
+<form action="{{ url_for("get_journal")}}" method="get">
+    <button type="submit" style="font-size:20px; height:40px; width:120px">Journal</button>
+</form>
+
 {% for key, value in data.items() %}
     <h2>{{ key }} - {{value}}</h2>
 {% endfor %}

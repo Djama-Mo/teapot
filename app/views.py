@@ -2,6 +2,7 @@ from flask import render_template, request, Response, stream_template, redirect,
 
 from exceptions.custom_exceptions import (IncorrectValueOfVolume, BoiledWater)
 from application import app, teapot
+from journal import get_data as journal_data
 
 
 @app.route('/')
@@ -51,3 +52,9 @@ def boil():
 def stop_boil():
     teapot.turn_off()
     return redirect(url_for('home'))
+
+
+@app.route('/journal')
+def get_journal():
+    data = journal_data()
+    return render_template('journal.html', data=data)

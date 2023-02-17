@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Teapot</title>
+</head>
+
+<body>
+<h1>This is Vitek VT-1155!</h1>
+
+<form action="{{ url_for("home")}}" method="get">
+    <button type="submit" style="font-size:20px; height:40px; width:120px">Home</button>
+</form>
+
+<h1>Time - Action</h1>
+{% for item in data %}
+    <h2>{{item}}</h2>
+{% endfor %}
+
+</body>
+</html>

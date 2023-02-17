@@ -4,6 +4,9 @@ from time import sleep
 from exceptions.custom_exceptions import (
     IncorrectValueOfVolume, BoiledWater
 )
+from journal import (
+    insert_turn_on, insert_turn_off, insert_boiled
+)
 
 
 class Teapot(object):
@@ -46,6 +49,7 @@ class Teapot(object):
 
     def turn_on(self):
         self.__state = True
+        insert_turn_on()
 
         for _ in range(self.__boiling_time):
             sleep(1)
@@ -53,11 +57,12 @@ class Teapot(object):
             yield f"{self.__current_temperature}"
 
             if self.__current_temperature >= 100:
-                self.__state = False
+                insert_boiled()
+                self.turn_off()
                 return
 
-        self.__state = False
+        self.turn_off()
 
     def turn_off(self):
         self.__state = False
-
+        insert_turn_off()
