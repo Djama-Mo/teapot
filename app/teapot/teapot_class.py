@@ -52,11 +52,11 @@ class Teapot(object):
         insert_turn_on()
 
         # On that value temperature increasing every second
-        inc_temperature = round((self.__boiling_temperature - self.__current_temperature) / self.__boiling_time, 1)
+        inc_temperature = (self.__boiling_temperature - self.__current_temperature) / self.__boiling_time
 
         for _ in range(self.__boiling_time):  # Boiling time sets in env file
             sleep(1)
-            self.__current_temperature += inc_temperature
+            self.__current_temperature = round(self.__current_temperature + inc_temperature, 1)
             yield f"{self.__current_temperature}"  # Returning value in stream
 
             if self.__current_temperature >= 100:
