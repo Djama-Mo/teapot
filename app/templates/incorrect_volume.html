@@ -9,12 +9,13 @@
 <body>
 <h1>This is Vitek VT-1155!</h1>
 
-{% for key, value in data.items() %}
-    <h2>{{ key }} - {{value}}</h2>
-{% endfor %}
+    <h2>state - {{data['state']}}</h2>
+    <h2>volume - {{data['volume']}}</h2>
+    <h2>water_temperature - {{data['water_temperature']}}</h2>
 
 <form action="{{ url_for("fill_teapot")}}" method="post">
     <h3>
+        <p style="color:red;">{{data['error']}}</p>
         <label for="teapot_volume">Teapot Volume:</label>
         <input type="text" id="teapot_volume" name="water_volume" style="font-size:20px;
         height:34px; width:540px" placeholder="Input volume of water you wanna fill teapot from 0.0 to 1.0">
@@ -22,7 +23,6 @@
     </h3>
 </form>
 
-<br>
 <form action="{{ url_for("boil")}}" method="get">
     <button type="submit" style="font-size:20px; height:40px; width:80px">Boil</button>
 </form>

@@ -12,4 +12,4 @@ services:
       - "5000:5000"
     env_file:
       - ./app/configs.env
-    command: gunicorn main:app --bind 0.0.0.0:5000 --reload --workers 5
+    command: gunicorn main:app --bind 0.0.0.0:5000 --reload
