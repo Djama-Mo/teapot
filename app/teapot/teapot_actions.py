@@ -2,6 +2,9 @@ from application import db, models
 
 
 def insert_initial_data():
+    """
+    Creating & Inserting initial data to work with database
+    """
     actions = (
         "Turned On",
         "Turned Off",

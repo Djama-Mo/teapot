@@ -18,6 +18,7 @@ def insert_boiled():
 
 
 def get_data():
+    #  SELECT j.timestamp, a.title FROM journal AS j JOIN action AS a ON j.action_id=a.id;
     rows = db.session.query(Journal, Action).filter(Journal.action_id==Action.id).all()
     parsed_rows = []
     for row in rows:
